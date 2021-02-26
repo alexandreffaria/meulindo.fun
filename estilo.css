@@ -1,6 +1,13 @@
 body{
     margin: 0;
     background-color: black;
+    color: antiquewhite;
+    font-family: monospace;
+}
+
+#casa{
+    display: inline;
+    font-size: 4em;
 }
 
 img {
