@@ -4,18 +4,3 @@ body{
     color: antiquewhite;
     font-family: monospace;
 }
-
-#casa{
-    display: inline;
-    font-size: 4em;
-}
-
-img {
-    width: 100px;
-    margin-top: -1px;
-}
-
-#noscope{
-    display: block;
-
-}

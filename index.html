@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
         <title>
             Casa do Meu Lindo
@@ -25,9 +25,46 @@
         <link rel="manifest" href="favicon/site.webmanifest">
     </head>
     <body>
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-            <img src='meulindo.png'>
-        </a>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary mt-5">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/">
+                <img src="meulindo.png" width="38" height="30" class="d-inline-block align-top" alt="Bootstrap" loading="lazy">
+              </a>
+              <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="navbar-collapse collapse" id="navbarSupportedContent2" style="">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  </li>
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+        
         <h1 id="casa">Casa do Meu Lindo &#129343;</h1>
         <iframe 
             id="noscope"
@@ -43,6 +80,27 @@
                     picture-in-picture" 
             allowfullscreen>
         </iframe>
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
+            Termos de Uso
+        </button>
+        <div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content bg-dark">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Termos de Uso</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Esse site é totalmente pessoal. Use as informações encontradas aqui a seu próprio risco.</p>
+                  <p>Eu não me responsabilizo por você. Boa sorte!</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success" data-bs-dismiss="modal">Ok...</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     </body>
