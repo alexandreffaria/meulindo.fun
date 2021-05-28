@@ -4,3 +4,12 @@ body{
     color: antiquewhite;
     font-family: monospace;
 }
+
+.youtube-recomendations{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.recomendation{
+    padding: 0.1em
+}
