@@ -14,12 +14,12 @@ body{
     margin-left: 1.16em;
 }
 
-.youtube-recomendations{
+.container-flexivel{
     display: flex;
     flex-wrap: wrap;
 }
 
-.recomendation{
+.caixa-flexivel{
     padding: 1.618em
 }
 
