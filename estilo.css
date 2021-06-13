@@ -36,3 +36,7 @@ a:hover{
     text-decoration: overline;
     color: darksalmon;
 }
+
+img{
+    border-radius: 10px;
+}
