@@ -17,10 +17,14 @@ body{
 .container-flexivel{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .caixa-flexivel{
-    padding: 1.618em
+    padding: 1.618em;
+    align-items: center;
+    zoom: 1;
 }
 
 a {
@@ -48,4 +52,42 @@ img{
 p{
     font-size: 1.1618em;
     text-align: justify;
+}
+
+.quote{
+    background-color: darkslategray;
+    padding: 1.168em;
+    border-radius: 1.16em;
+    font-size: 1.3em
+}
+
+.codigo{
+    background-color: darkslategray;
+    padding: 10px;   
+    display: inline-block;
+}
+
+
+.arquivo{
+    background-color: dimgray;
+    margin-left: -10px;
+    padding-left: 10px;
+    
+}
+
+.comentario{
+    width: 355px;
+}
+
+.funcoes{
+    color: lightcoral;
+}
+
+.texto-no-meio{
+    text-align: center;
+}
+
+.reset{
+    align-items: flex-start;
+    justify-content: flex-start;
 }
