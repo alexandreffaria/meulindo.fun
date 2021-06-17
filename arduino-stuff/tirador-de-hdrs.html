@@ -53,7 +53,7 @@
         </div>
         <h1>Tirador de HDRs (MG996R)</h1>
 
-        <div class="container-flexivel">
+        <div class="container-flexivel reset">
           <div class="caixa-flexivel metade">
             <p>
               Esse carinha funciona teoricamente entre 4.8 e 7.2V mas eu não consegui usar uma fonte de telefone
@@ -70,7 +70,7 @@
               função writeMicroseconds() da mesma biblioteca, e lendo a documentação eu acredito que ela confirma 
               o fato dos comportamentos diferentes:
             </p>
-            <p>
+            <p class="quote">
               <em>
                   Continuous-rotation servos will respond to the writeMicrosecond function in an analogous manner to the write function.
               </em>
@@ -79,7 +79,7 @@
               E usando esses valores eu consegui controlar a direção da rotação, sendo 1500 o servo fica parado, 1600+ servo move sentido 
               horário, 1400- servo move sentido anti-horário e quanto mais longe de 1500 mais rápido é a velocidade do movimento.
             </p>
-            <p>
+            <p class="quote">
               <em>
                   Writes a value in microseconds (uS) to the servo, controlling the shaft accordingly. On a standard servo, 
                   this will set the angle of the shaft. On standard servos a parameter value of 1000 is fully counter-clockwise, 2000 is fully clockwise, and 1500 is in the middle.
@@ -115,8 +115,89 @@
               Eu to pensando em usar o app do google pra fazer a montagem das fotos imediatamente, mas talvez minhas brincadeiras com Kotlin possam 
               ser úteis.
             </p>
+<div class="container-flexivel reset">
+  <div class="caixa-flexivel">
+    <div class="codigo ">
+      <div class="arquivo">
+          tirador-de-hdrs.ino
+      </div>
+<pre>
+<span class="funcoes"> #include </span>&lt;Servo.h&gt;
+
+<span class="funcoes">int</span> servoPin = 9;
+<span class="funcoes">String</span> input;
+
+<span class="funcoes">Servo</span> Base;
+
+<span class="funcoes">void</span> setup() {
+Serial.<span class="funcoes">begin</span>(9600);
+Base.<span class="funcoes">attach</span>(servoPin);
+
+Serial.<span class="funcoes">println</span>("Inicializado.");
+}
+
+<span class="funcoes">void</span> loop() {
+<span class="funcoes">if</span> (Serial.<span class="funcoes">available</span>()){
+  input = Serial.<span class="funcoes">readStringUntil</span>('\n');
+  mover(input.<span class="funcoes">toInt</span>());
+}
+
+
+}
+
+<span class="funcoes">void</span> mover(<span class="funcoes">int</span> input){
+
+  <span class="funcoes">if</span> (input == 360){
+    Serial.<span class="funcoes">println</span>(input);
+    Base.<span class="funcoes">writeMicroseconds</span>(1600);  
+    <span class="funcoes">delay</span>(4240);
+    Base.<span class="funcoes">writeMicroseconds</span>(1500);  
+  }
+
+  <span class="funcoes">if</span> (input == 10){
+  Serial.<span class="funcoes">println</span>(input);
+
+  <span class="funcoes">for</span>( int i = 0; i < 10; i++){
+      Serial.<span class="funcoes">println</span>(i);
+      Base.<span class="funcoes">writeMicroseconds</span>(1600);  
+      <span class="funcoes">delay</span>(620);
+      Base.<span class="funcoes">writeMicroseconds</span>(1500);
+      <span class="funcoes">delay</span>(1000); 
+    }
+
+  }
+
+  <span class="funcoes">if</span> (input == 20){
+  Serial.<span class="funcoes">println</span>(input);
+
+  <span class="funcoes">for</span>( int i = 0; i < 20; i++){
+      Serial.<span class="funcoes">println</span>(i);
+      Base.<span class="funcoes">writeMicroseconds</span>(1600);  
+      <span class="funcoes">delay</span>(390);
+      Base.<span class="funcoes">writeMicroseconds</span>(1500);
+      <span class="funcoes">delay</span>(1000); 
+    }
+
+  }
+
+}
+</pre>
+ 
+  </div>
+</div>
+  <div class="caixa-flexivel">
+    <p class="comentario">
+      No momento esse código espera uma mensagem no Serial, se ela for igual a 360 o servo da uma volta completa, 
+      igual a 10 uma volta dividida 10 vezes com um intervalo de 1 segundo entre os movimentos e o 20 é igual ao 
+      10, mas com 20 divisões.
+    </p>
+  </div>
+</div>
+            
+
+
           </div>
-          <div class="caixa-flexivel">
+          <div class="caixa-flexivel ">
             <img src="../servo-360.jpg" alt="Tirador de HDR's">
           </div>
         </div>
