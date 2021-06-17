@@ -40,3 +40,12 @@ a:hover{
 img{
     border-radius: 10em;
 }
+
+.metade {
+    width: 50%;
+}
+
+p{
+    font-size: 1.1618em;
+    text-align: justify;
+}
