@@ -52,58 +52,65 @@
           </div>
         </div>
         <h1>Tirador de HDRs (MG996R)</h1>
-        <p>
-            Esse carinha funciona teoricamente entre 4.8 e 7.2V mas eu não consegui usar uma fonte de telefone
-            de 5V com ele, mas com uma fonte de 6V (12V regulada pra 6V) deu certo. A próxima surpresa foi o
-            descobrir que aparentemente os servos que giram 360 não são usados como movimentos precisos como os 
-            de 180, parece que eles são usados mais como uma forma de girar no sentido horário ou anti-horário,
-            que pode ser muito útil, especialmente esse modelo que tem 11kg de torque.
-        </p>
-        <p>
-            Quando eu comecei a tentar fazer ele funcionar eu tava usando a biblioteca Servo, que eu acredito
-            que funciona bem diretamente, do tipo Servo.write(90) move o servo pra posicão 90 graus. Mas Quando
-            eu fazia isso ele só dirava em uma direção continuamente. Googlando isso que eu cheguei no que eu falei
-            mais cedo que os servos 360 se comportam de um jeito diferente. Acabei achando um exemplo que usava a 
-            função writeMicroseconds() da mesma biblioteca, e lendo a documentação eu acredito que ela confirma 
-            o fato dos comportamentos diferentes:
-        </p>
-        <p>
-            <em>
-                Continuous-rotation servos will respond to the writeMicrosecond function in an analogous manner to the write function.
-            </em>
-        </p>
-        <p>
-            E usando esses valores eu consegui controlar a direção da rotação, sendo 1500 o servo fica parado, 1600+ servo move sentido 
-            horário, 1400- servo move sentido anti-horário e quanto mais longe de 1500 mais rápido é a velocidade do movimento.
-        </p>
-        <p>
-            <em>
-                Writes a value in microseconds (uS) to the servo, controlling the shaft accordingly. On a standard servo, this will set the angle of the shaft. On standard servos a parameter value of 1000 is fully counter-clockwise, 2000 is fully clockwise, and 1500 is in the middle.
-            </em>
-        </p>
-        <p>
-            Agora o plano é tentar controlar a o angulo do movimento, usando uma duração de pulso, na minha cabeça
-            faz sentido, usar o servo.Write() como o setup da velocidade, e ativar essa velocidade pelo tempo necessário
-            para fazer o movimento. Meu medo é que isso parece uma aplicação óbvia que já deveria ter sido resolvidade
-            pela biblioteca, né? Dunno, gotta sleep on it. 
-        </p>
-        <p>
-          Então, eu do passado estava certo, e a estratégia de controlar a duração do pulso usando o delay funcionou, eu tenho quase certeza que é uma gambiarra, principalmente por dois motivos. O primeiro é o fato de o delay não é linear. O que eu 
-          quero dizer com isso é que 4200 mili segundos é o tempo que o servo gira 1 volta completa com o pulso de 1600 (Servo.writeMicroseconds(1600)) mas quando eu tento dividir a volta em 10 partes iguais eu preciso usar um delay de 620 mili segundos,
-          se a relação fosse linear o delay seria de 420ms, e não consigo entender exatamente o porque dessa relação curva. O segundo motivo é que (eu ainda não confirmei isso mas aconteceu algumas vezes) é que o valor do delay tem variado, o que mostra
-          que provavelmente tem um jeito melhor de fazer isso, eu "calibrei" os delays e quando fui testar todas as rotações elas estavam significativamente atrasadas, o que me faz acreditar que o pulso que o Arduino manda pela porta PWM é dependente
-          da tensão usada naquele momento. 
-        </p>
-        <p>
-          Mas o que eu tô fazendo agora com ele não precisa ser muito preciso, eu posso tirar mais fotos que o necessário pra complementar essas pequenas diferenças que tão aparecedo, agora é só desenhar e imprimir uma casa pro servo e o arduino, e já 
-          começar a planejar como montar a bandeja do tilt vertical. Eu pretendo começar com um suporte para telefone, pela praticidade, e eventualmente fazer uma versão pra DSLRs também. E como eu pretendo usar a mesma build pro celular e pra camera
-          eu comprei a mesma versão desse servo que tem um toque de 13kg mas com 180 graus de rotação que deve funcionar do jeito que eu esperava que esse servo fosse funcionar. Se for o caso, eu acredito que é só usar o Servo.write(90) pra girar o 
-          servo 90 graus, que é bem mais tranquilo do que a gambiarra dos delays, e por isso deve ser bem mais fácil de implementar e a parte do design mecânico que vai ser o maior desafio agora, eu acredito pelo menos. Ah, e acabei comprando uma case de 
-          6 pilhas AA pra deixar ele totalmente portátil, só ligar em qualquer ambiente, e capturar uma HDR rapidão. Eu to pensando em usar o app do google pra fazer a montagem das fotos imediatamente, mas talvez minhas brincadeiras com Kotlin possam 
-          ser úteis.
-        </p>
 
-
+        <div class="container-flexivel">
+          <div class="caixa-flexivel metade">
+            <p>
+              Esse carinha funciona teoricamente entre 4.8 e 7.2V mas eu não consegui usar uma fonte de telefone
+              de 5V com ele, mas com uma fonte de 6V (12V regulada pra 6V) deu certo. A próxima surpresa foi o
+              descobrir que aparentemente os servos que giram 360 não são usados como movimentos precisos como os 
+              de 180, parece que eles são usados mais como uma forma de girar no sentido horário ou anti-horário,
+              que pode ser muito útil, especialmente esse modelo que tem 11kg de torque.
+            </p>
+            <p>
+              Quando eu comecei a tentar fazer ele funcionar eu tava usando a biblioteca Servo, que eu acredito
+              que funciona bem diretamente, do tipo Servo.write(90) move o servo pra posicão 90 graus. Mas Quando
+              eu fazia isso ele só dirava em uma direção continuamente. Googlando isso que eu cheguei no que eu falei
+              mais cedo que os servos 360 se comportam de um jeito diferente. Acabei achando um exemplo que usava a 
+              função writeMicroseconds() da mesma biblioteca, e lendo a documentação eu acredito que ela confirma 
+              o fato dos comportamentos diferentes:
+            </p>
+            <p>
+              <em>
+                  Continuous-rotation servos will respond to the writeMicrosecond function in an analogous manner to the write function.
+              </em>
+            </p>
+            <p>
+              E usando esses valores eu consegui controlar a direção da rotação, sendo 1500 o servo fica parado, 1600+ servo move sentido 
+              horário, 1400- servo move sentido anti-horário e quanto mais longe de 1500 mais rápido é a velocidade do movimento.
+            </p>
+            <p>
+              <em>
+                  Writes a value in microseconds (uS) to the servo, controlling the shaft accordingly. On a standard servo, this will set the angle of the shaft. On standard servos a parameter value of 1000 is fully counter-clockwise, 2000 is fully clockwise, and 1500 is in the middle.
+              </em>
+            </p>
+            <p>
+              Agora o plano é tentar controlar a o angulo do movimento, usando uma duração de pulso, na minha cabeça
+              faz sentido, usar o servo.Write() como o setup da velocidade, e ativar essa velocidade pelo tempo necessário
+              para fazer o movimento. Meu medo é que isso parece uma aplicação óbvia que já deveria ter sido resolvidade
+              pela biblioteca, né? Dunno, gotta sleep on it. 
+            </p>
+            <p>
+              Então, eu do passado estava certo, e a estratégia de controlar a duração do pulso usando o delay funcionou, eu tenho quase certeza que é uma gambiarra, principalmente por dois motivos. O primeiro é o fato de o delay não é linear. O que eu 
+              quero dizer com isso é que 4200 mili segundos é o tempo que o servo gira 1 volta completa com o pulso de 1600 (Servo.writeMicroseconds(1600)) mas quando eu tento dividir a volta em 10 partes iguais eu preciso usar um delay de 620 mili segundos,
+              se a relação fosse linear o delay seria de 420ms, e não consigo entender exatamente o porque dessa relação curva. O segundo motivo é que (eu ainda não confirmei isso mas aconteceu algumas vezes) é que o valor do delay tem variado, o que mostra
+              que provavelmente tem um jeito melhor de fazer isso, eu "calibrei" os delays e quando fui testar todas as rotações elas estavam significativamente atrasadas, o que me faz acreditar que o pulso que o Arduino manda pela porta PWM é dependente
+              da tensão usada naquele momento. 
+            </p>
+            <p>
+              Mas o que eu tô fazendo agora com ele não precisa ser muito preciso, eu posso tirar mais fotos que o necessário pra complementar essas pequenas diferenças que tão aparecedo, agora é só desenhar e imprimir uma casa pro servo e o arduino, e já 
+              começar a planejar como montar a bandeja do tilt vertical. Eu pretendo começar com um suporte para telefone, pela praticidade, e eventualmente fazer uma versão pra DSLRs também. E como eu pretendo usar a mesma build pro celular e pra camera
+              eu comprei a mesma versão desse servo que tem um toque de 13kg mas com 180 graus de rotação que deve funcionar do jeito que eu esperava que esse servo fosse funcionar. Se for o caso, eu acredito que é só usar o Servo.write(90) pra girar o 
+              servo 90 graus, que é bem mais tranquilo do que a gambiarra dos delays, e por isso deve ser bem mais fácil de implementar e a parte do design mecânico que vai ser o maior desafio agora, eu acredito pelo menos. Ah, e acabei comprando uma case de 
+              6 pilhas AA pra deixar ele totalmente portátil, só ligar em qualquer ambiente, e capturar uma HDR rapidão. Eu to pensando em usar o app do google pra fazer a montagem das fotos imediatamente, mas talvez minhas brincadeiras com Kotlin possam 
+              ser úteis.
+            </p>
+          </div>
+          <div class="caixa-flexivel">
+            <img src="../servo-360.jpg" alt="Tirador de HDR's">
+          </div>
+        </div>
+        
       </div>
     </body>
 </html>
