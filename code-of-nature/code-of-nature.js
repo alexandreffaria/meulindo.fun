@@ -24,7 +24,7 @@ var randomWalker = function( p ) {
         p.andador.walk();
     };
   };
-  var myp5 = new p5(randomWalker, 'randomWalker');
+  var randomWalker = new p5(randomWalker, 'randomWalker');
   
   // Bubble Up
   var bubbleUp = function( p ) { 
@@ -48,7 +48,7 @@ var randomWalker = function( p ) {
     
     };
   };
-  var myp5 = new p5(bubbleUp, 'bubbleUp');
+  var bubbleUp = new p5(bubbleUp, 'bubbleUp');
 
   // Random Circles
   var randomCircles = function( p ) { 
@@ -86,4 +86,4 @@ var randomWalker = function( p ) {
     
     };
   };
-  var myp5 = new p5(randomCircles, 'randomCircles');
+  var randomCircles = new p5(randomCircles, 'randomCircles');
