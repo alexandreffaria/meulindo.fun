@@ -91,3 +91,7 @@ p{
     align-items: flex-start;
     justify-content: flex-start;
 }
+
+.p5Canvas{
+    border-radius: 6.168%;
+}
