@@ -31,7 +31,7 @@ var randomWalker = function( p ) {
     
     p.setup = function() {
         p.createCanvas(400, 400);
-        p.background(p.random(153,203));
+        p.background(28);
     };
   
     p.draw = function() {
