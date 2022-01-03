@@ -35,15 +35,13 @@ var randomWalker = function( p ) {
     };
   
     p.draw = function() {
-      p.r = p.random(25,100);
-      p.g = p.random(110,180);
-      p.b = p.random(80,220);
+      p.g = p.random(25,100);
       p.x = p.random(400);
       p.y = p.random(400);
       p.size = p.random(155);
       p.transparency = p.random(100);
       p.noStroke();
-      p.fill(p.r,p.g,p.b,p.transparency);
+      p.fill(p.g,p.transparency);
       p.circle(p.x,p.y,p.size);
     
     };
