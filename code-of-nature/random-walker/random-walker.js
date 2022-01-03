@@ -1,7 +1,7 @@
 class Walker {
     constructor() {
-      this.x = windowWidth / 2;
-      this.y = windowHeight / 2;
+      this.x = 400 / 2;
+      this.y = 400 / 2;
     }
     walk() {
       stroke(random(20,195));
@@ -14,7 +14,7 @@ class Walker {
   let andador;
   
   function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(400, 400);
     background(28);
     andador = new Walker();
   }
