@@ -1,9 +1,13 @@
+const divWidth = 500;
+const divHeight = 500;
+
+
 // RandomWalker
 var randomWalker = function( p ) {
     class Walker {
         constructor() {
-          this.x = 400 / 2;
-          this.y = 400 / 2;
+          this.x = divWidth / 2;
+          this.y = divHeight / 2;
         }
         walk() {
           p.stroke(250,235,215,p.random(255));
@@ -15,7 +19,7 @@ var randomWalker = function( p ) {
     }
     let andador;
     p.setup = function() {
-        p.createCanvas(400, 400);
+        p.createCanvas(divWidth, divHeight);
         p.background(28);
         p.andador = new Walker();
     };
@@ -31,14 +35,14 @@ var randomWalker = function( p ) {
   var bubbleUp = function( p ) { 
     
     p.setup = function() {
-        p.createCanvas(400, 400);
+        p.createCanvas(divWidth, divHeight);
         p.background(28);
     };
   
     p.draw = function() {
       p.frameRate(24);
-      p.x = p.random(400);
-      p.y = p.random(400);
+      p.x = p.random(divWidth);
+      p.y = p.random(divHeight);
       p.size = p.random(15);
       p.transparency = p.random(30);
       p.noStroke();
@@ -53,8 +57,8 @@ var randomWalker = function( p ) {
   var randomCircles = function( p ) { 
     class Circle {
       constructor() {
-        this.x = 200;
-        this.y = 200;
+        this.x = divWidth/2;
+        this.y = divHeight/2;
       }
     
       move() {
@@ -65,13 +69,13 @@ var randomWalker = function( p ) {
         p.stroke(250,235,215);
         p.strokeWeight(4);
         p.noFill();
-        p.ellipse(this.x,this.y,24,24)
+        p.circle(this.x,this.y,divWidth/10);
       }
     }
     let circle1,circle2;
 
     p.setup = function() {
-      p.createCanvas(400, 400);
+      p.createCanvas(divWidth, divHeight);
       circle1 = new Circle();
       circle2 = new Circle();
     };
@@ -93,7 +97,7 @@ var randomWalker = function( p ) {
     
 
     p.setup = function() {
-      p.createCanvas(400, 400);
+      p.createCanvas(divWidth, divHeight);
       
     };
         
@@ -101,12 +105,12 @@ var randomWalker = function( p ) {
     let perlinY = 49030;
     p.draw = function() {
       p.background(28);
-      var x = p.noise(perlinX)*400;
-      var y = p.noise(perlinY)*400;
+      var x = p.noise(perlinX)*divWidth;
+      var y = p.noise(perlinY)*divHeight;
       p.stroke(250,235,215);
       p.strokeWeight(4);
       p.noFill();
-      p.circle(x,y,50);
+      p.circle(x,y,divWidth/10);
       p.frameRate(24);
       perlinY += 0.01;
       perlinX += 0.01;
