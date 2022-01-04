@@ -38,8 +38,8 @@ var randomWalker = function( p ) {
       
       p.x = p.random(400);
       p.y = p.random(400);
-      p.size = p.random(155);
-      p.transparency = p.random(10);
+      p.size = p.random(15);
+      p.transparency = p.random(30);
       p.noStroke();
       p.fill(250,235,215,p.transparency);
       p.circle(p.x,p.y,p.size);
