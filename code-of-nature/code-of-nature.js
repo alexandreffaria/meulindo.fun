@@ -108,8 +108,8 @@ var randomWalker = function( p ) {
       p.noFill();
       p.circle(x,y,50);
       p.frameRate(24);
-      perlinY += 0.005;
-      perlinX += 0.005;
+      perlinY += 0.01;
+      perlinX += 0.01;
     
     };
   };
