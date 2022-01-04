@@ -21,6 +21,7 @@ var randomWalker = function( p ) {
     };
   
     p.draw = function() {
+        p.frameRate(24);
         p.andador.walk();
     };
   };
@@ -35,7 +36,7 @@ var randomWalker = function( p ) {
     };
   
     p.draw = function() {
-      
+      p.frameRate(24);
       p.x = p.random(400);
       p.y = p.random(400);
       p.size = p.random(15);
@@ -76,6 +77,7 @@ var randomWalker = function( p ) {
     };
   
     p.draw = function() {
+      p.frameRate(24);
       p.background(28);
       circle1.move();
       circle1.show();
@@ -85,3 +87,30 @@ var randomWalker = function( p ) {
     };
   };
   var randomCircles = new p5(randomCircles, 'randomCircles');
+
+  // Perlin Ball
+  var perlinBall = function( p ) { 
+    
+
+    p.setup = function() {
+      p.createCanvas(400, 400);
+      
+    };
+        
+    let perlinX = 2400;
+    let perlinY = 49030;
+    p.draw = function() {
+      p.background(28);
+      var x = p.noise(perlinX)*400;
+      var y = p.noise(perlinY)*400;
+      p.stroke(250,235,215);
+      p.strokeWeight(4);
+      p.noFill();
+      p.circle(x,y,50);
+      p.frameRate(24);
+      perlinY += 0.005;
+      perlinX += 0.005;
+    
+    };
+  };
+  var perlinBall = new p5(perlinBall, 'perlinBall');
