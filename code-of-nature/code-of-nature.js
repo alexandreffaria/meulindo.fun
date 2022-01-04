@@ -6,7 +6,7 @@ var randomWalker = function( p ) {
           this.y = 400 / 2;
         }
         walk() {
-          p.stroke(p.random(20,195));
+          p.stroke(250,235,215,p.random(255));
           p.point(this.x, this.y);
           this.x += p.random(-1, 1);
           this.y += p.random(-1, 1);
@@ -35,13 +35,13 @@ var randomWalker = function( p ) {
     };
   
     p.draw = function() {
-      p.g = p.random(25,100);
+      
       p.x = p.random(400);
       p.y = p.random(400);
       p.size = p.random(155);
-      p.transparency = p.random(100);
+      p.transparency = p.random(10);
       p.noStroke();
-      p.fill(p.g,p.transparency);
+      p.fill(250,235,215,p.transparency);
       p.circle(p.x,p.y,p.size);
     
     };
@@ -61,7 +61,7 @@ var randomWalker = function( p ) {
         this.y = this.y + p.random(-1, 1);
       }
       show() {
-        p.stroke(197);
+        p.stroke(250,235,215);
         p.strokeWeight(4);
         p.noFill();
         p.ellipse(this.x,this.y,24,24)
